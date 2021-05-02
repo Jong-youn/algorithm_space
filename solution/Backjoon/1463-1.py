@@ -6,22 +6,22 @@
 
 import timeit
 
+from icecream import ic
 def solution(num):
-    if dp[num] == -1:
+    dp = [0]*(N+1)
+    for i in range(2, num+1):
         a = []
-        if num%3 == 0:
-            a.append(solution(num//3))
-        if num%2 == 0:
-            a.append(solution(num//2))
-        a.append(solution(num-1))
-        dp[num] = min(a) + 1
+        if i%3 == 0:
+            a.append(dp[i//3])
+        if i%2 == 0:
+            a.append(dp[i//2])
+        a.append(dp[i-1])
+        dp[i] = min(a) + 1
     return dp[num]
 
 if __name__ == "__main__":
     startTime = timeit.default_timer()
     N = int(input())
-    dp = [0, 0] + [-1]*(N-1)
     print(solution(N))
     endTime = timeit.default_timer()
     print(f"{endTime - startTime} 초 소요")
-
