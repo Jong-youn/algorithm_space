@@ -25,6 +25,15 @@ class LinkedList(object):
     new_node.next = self.head
     self.head = new_node
 
+  def removeFirst(self):
+    self.head = self.head.next
+
+  def removeLast(self):
+    last = self.head
+    while last.next.next:
+      last = last.next
+    last.next = None
+
   def contains(self, obj):
     search = self.head
     while search:
@@ -56,8 +65,12 @@ a.add(5)
 a.addFirst(4)
 ic(a.head.data, a.head.next.data)
 a.add(10)
+a.removeFirst()
+ic(a.head.data) #5
 a.add(15)
+ic(a.contains(15))
 ic(a.size())
-print(a.contains(15))
-print(a.indexOf(15))
+a.removeLast()
+ic(a.contains(15))
 ic(a.size())
+
