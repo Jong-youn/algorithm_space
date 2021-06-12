@@ -20,6 +20,11 @@ class LinkedList(object):
     else:
       self.head = new_node
 
+  def addFirst(self, obj):
+    new_node = Node(obj)
+    new_node.next = self.head
+    self.head = new_node
+
   def contains(self, obj):
     search = self.head
     while search:
@@ -47,14 +52,10 @@ class LinkedList(object):
     return idx
 
 a = LinkedList()
-ic(a.size())
-# print(a, a.head)
 a.add(5)
-ic(a.size())
-# print(a.head, a.head.data, a.head.next)
+a.addFirst(4)
+ic(a.head.data, a.head.next.data)
 a.add(10)
-ic(a.size())
-# print(a.head, a.head.data, a.head.next)
 a.add(15)
 ic(a.size())
 print(a.contains(15))
