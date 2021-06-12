@@ -19,7 +19,7 @@ class LinkedList(object):
       pointer.next = new_node
     else:
       self.head = new_node
-  
+
   def contains(self, obj):
     search = self.head
     while search:
@@ -27,8 +27,17 @@ class LinkedList(object):
         return True
       search = search.next
     return False
-  
-  
+
+  def indexOf(self, obj):
+    search = self.head
+    idx = 0
+    while search:
+      if search.data == obj:
+        return idx
+      idx +=1
+      search = search.next
+    return -1
+
 a = LinkedList()
 # print(a, a.head)
 a.add(5)
@@ -37,3 +46,4 @@ a.add(10)
 # print(a.head, a.head.data, a.head.next)
 a.add(15)
 print(a.contains(15))
+print(a.indexOf(15))
