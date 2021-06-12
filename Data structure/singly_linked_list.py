@@ -38,12 +38,25 @@ class LinkedList(object):
       search = search.next
     return -1
 
+  def size(self):
+    idx = 0
+    search = self.head
+    while search:
+      search = search.next
+      idx +=1
+    return idx
+
 a = LinkedList()
+ic(a.size())
 # print(a, a.head)
 a.add(5)
+ic(a.size())
 # print(a.head, a.head.data, a.head.next)
 a.add(10)
+ic(a.size())
 # print(a.head, a.head.data, a.head.next)
 a.add(15)
+ic(a.size())
 print(a.contains(15))
 print(a.indexOf(15))
+ic(a.size())
