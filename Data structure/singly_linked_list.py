@@ -27,10 +27,29 @@ class LinkedList(object):
     new_node.next = self.head
     self.head = new_node
 
+  # 특정 인덱스의 값 출력
+  def get(self, obj):
+    if obj < 0:
+      print('\033[36m' + 'Error[get] :: 적절하지 않은 입력 값 입니다.' + '\033[0m')
+      return
+    
+    search = self.head
+    idx = 0
+    while search.next:
+      if idx == obj:
+        break
+      idx += 1
+      search = search.next
+    if idx == obj:
+      return search.data
+    else:
+      print('\033[36m' + 'Error[get] :: 적절하지 않은 입력 값 입니다.' + '\033[0m')
+      return
+
   # 특정 인덱스에 있는 데이터 제거. 매개변수가 없을 시 맨 처음 인덱스를 삭제한다.
   def remove(self, obj=0):
     if obj < 0 or obj >= self.size():
-      print('\033[31m' + 'Error :: 적절하지 않은 입력 값 입니다.')
+      print('\033[31m' + 'Error[remove] :: 적절하지 않은 입력 값 입니다.' + '\033[0m')
       return 
     elif obj == 0:
       self.removeFirst()
@@ -94,6 +113,8 @@ a.remove(0)
 ic(a.head)
 a.remove(-1)
 a.add(5)
+a.get(-2)
+ic(a.get(0))
 a.remove()
 a.add(6)
 a.add(7)
