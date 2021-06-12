@@ -9,6 +9,7 @@ class LinkedList(object):
   def __init__(self):
     self.head = None
 
+  # 리스트의 가장 마지막에 데이터 추가
   def add(self, new):
     new_node = Node(new)
 
@@ -20,20 +21,24 @@ class LinkedList(object):
     else:
       self.head = new_node
 
+  # 리스트의 가장 첫번째 인덱스에 데이터 추가
   def addFirst(self, obj):
     new_node = Node(obj)
     new_node.next = self.head
     self.head = new_node
 
+  # 리스트의 가장 첫번째 값 삭제
   def removeFirst(self):
     self.head = self.head.next
 
+  # 리스트의 가장 마지막 값 삭제
   def removeLast(self):
     last = self.head
     while last.next.next:
       last = last.next
     last.next = None
 
+  # 리스트가 특정 데이터를 포함하고 있는지 여부
   def contains(self, obj):
     search = self.head
     while search:
@@ -42,6 +47,8 @@ class LinkedList(object):
       search = search.next
     return False
 
+  # 특정 데이터의 위치 값 출력, 없으면 -1 반환 
+  # 같은 데이터를 여러개 포함하고 있다면, 리스트의 제일 앞에 위치한 위치를 출력
   def indexOf(self, obj):
     search = self.head
     idx = 0
@@ -52,6 +59,7 @@ class LinkedList(object):
       search = search.next
     return -1
 
+  # 링크드 리스트의 총 길이 
   def size(self):
     idx = 0
     search = self.head
