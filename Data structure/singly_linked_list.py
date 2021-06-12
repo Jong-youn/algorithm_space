@@ -27,7 +27,8 @@ class LinkedList(object):
     new_node.next = self.head
     self.head = new_node
 
-  def remove(self, obj):
+  # 특정 인덱스에 있는 데이터 제거. 매개변수가 없을 시 맨 처음 인덱스를 삭제한다.
+  def remove(self, obj=0):
     if obj < 0 or obj >= self.size():
       print('\033[31m' + 'Error :: 적절하지 않은 입력 값 입니다.')
       return 
@@ -92,8 +93,8 @@ ic(a.head)
 a.remove(0)
 ic(a.head)
 a.remove(-1)
-a.remove(0)
 a.add(5)
+a.remove()
 a.add(6)
 a.add(7)
 a.add(8)
