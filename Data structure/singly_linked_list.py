@@ -27,6 +27,24 @@ class LinkedList(object):
     new_node.next = self.head
     self.head = new_node
 
+  def remove(self, obj):
+    if obj < 0 or obj >= self.size():
+      print('\033[31m' + 'Error :: 적절하지 않은 입력 값 입니다.')
+      return 
+    elif obj == 0:
+      self.removeFirst()
+    else:
+      search = self.head
+      idx = 0
+      while search.next:
+        if idx == (obj-1):
+          before = search
+        elif idx == obj:
+          break
+        search = search.next
+        idx +=1
+      before.next = search.next
+
   # 리스트의 가장 첫번째 값 삭제
   def removeFirst(self):
     self.head = self.head.next
@@ -70,8 +88,21 @@ class LinkedList(object):
 
 a = LinkedList()
 a.add(5)
-a.addFirst(4)
+ic(a.head)
+a.remove(0)
+ic(a.head)
+a.remove(-1)
+a.remove(0)
+a.add(5)
+a.add(6)
+a.add(7)
+a.add(8)
+a.add(9)
+a.remove(1)
+print(a.contains(6))
 ic(a.head.data, a.head.next.data)
+a.addFirst(4)
+ic(a.head.data)
 a.add(10)
 a.removeFirst()
 ic(a.head.data) #5
