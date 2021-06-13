@@ -76,6 +76,13 @@ class LinkedList(object):
       last = last.next
     last.next = None
 
+  # 모든 값 제거
+  def clear(self):
+    if self.head:
+      self.head = None
+    else:
+      return 
+
   # 리스트가 특정 데이터를 포함하고 있는지 여부
   def contains(self, obj):
     search = self.head
@@ -108,30 +115,11 @@ class LinkedList(object):
 
 a = LinkedList()
 a.add(5)
-ic(a.head)
-a.remove(0)
-ic(a.head)
-a.remove(-1)
-a.add(5)
-a.get(-2)
-ic(a.get(0))
-a.remove()
 a.add(6)
 a.add(7)
 a.add(8)
 a.add(9)
-a.remove(1)
-print(a.contains(6))
-ic(a.head.data, a.head.next.data)
-a.addFirst(4)
-ic(a.head.data)
-a.add(10)
-a.removeFirst()
-ic(a.head.data) #5
-a.add(15)
-ic(a.contains(15))
-ic(a.size())
-a.removeLast()
-ic(a.contains(15))
+a.clear()
+ic('clear')
 ic(a.size())
 
