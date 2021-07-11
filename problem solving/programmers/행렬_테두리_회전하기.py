@@ -6,19 +6,17 @@ from icecream import ic
 
 def solution(rows, columns, queries):
     answer = []
-    board = [[j*rows + i for i in range(1, rows+1)] for j in range(columns)]
-    
+    board = [[j*columns + i for i in range(1, columns+1)] for j in range(rows)]
+    ic(board)
     def smallest(quary):
         r1, c1, r2, c2 = quary
         small = rows*columns
-        r, c = r1, c1
-        before = board[r][c]
-        c+=1
+        before = board[r1][c1]
+        r, c = r1, (c1+1)
         
         while True:
             if before < small:
                 small = before
-            ic(r, c)
             before, board[r][c] = board[r][c], before
             
             if (r, c) == (r1, c1):
@@ -38,9 +36,11 @@ def solution(rows, columns, queries):
     for quary in queries:
         quary = list(map(lambda x: x-1, quary))
         answer.append(smallest(quary))
+        ic(board)
             
     return answer
 
 ic(solution(6, 6, [[2,2,5,4],[3,3,6,6],[5,1,6,3]]))	#[8, 10, 25]
 ic(solution(3, 3, [[1,1,2,2],[1,2,2,3],[2,1,3,2],[2,2,3,3]]))	#[1, 1, 5, 3]
-ic(solution(100, 97, [[1,1,100,97]])) #[1]
+# ic(solution(100, 97, [[1,1,100,97]])) #[1]
+ic(solution(6, 4, [[1,1,6,4]])) #[1]
